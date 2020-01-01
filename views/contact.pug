@@ -1,0 +1,39 @@
+extends layout.pug
+
+block content
+  // Social Icons
+  div.social-icons.py-4
+    a(href='mailto:info@melodyreebs.com')
+      button.btn.btn-secondary(type='button')
+        i.fa.fa-envelope
+    a(href='https://github.com/mobilemelody', target='_blank')
+      button.btn.btn-secondary(type='button')
+        i.fa.fa-github
+    a(href='https://www.linkedin.com/in/melodyreebs', target='_blank')
+      button.btn.btn-secondary(type='button')
+        i.fa.fa-linkedin
+    a(href='https://angel.co/mobilemelody', target='_blank')
+      button.btn.btn-secondary(type='button')
+        i.fa.fa-angellist
+
+  // Contact Form
+  if submitted
+    p thank you for your message!
+  else
+    p or send me a message using the form below!
+    form#contact-form(method='post', action='/contact')
+      div.form-row
+        div.col-sm-6
+          label.pt-3(for='name') Name
+          input#name.form-control(type='text', name='name', required)
+        div.col-sm-6
+          label.pt-3(for='email') Email Address
+          input#email.form-control(type='text', name='email', required)
+      div.form-row
+        div.col
+          label.pt-3(for='message') Your Message
+          textarea#message.form-control(name='message', rows='3')
+      div.form-row.pt-3
+        div.col
+          button.btn.btn-secondary(type='submit') Send!
+        

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:200|Roboto:300,400,700|Sue+Ellen+Francisco&display=swap');
+
+/* General */
+body {
+	background: url('https://melody-reebs.s3.amazonaws.com/debut_light.png') repeat;
+	font-family: "Roboto", sans-serif;
+}
+
+a {
+	color: #13A89F;
+}
+
+a:hover {
+	color: #999999;
+}
+
+h1, h2 {
+	font-family: "Roboto Slab", serif;
+	font-weight: 200;
+}
+
+h3 {
+	color: #999999;
+	font-size: 1.2rem;
+}
+
+button.btn {
+	background-color: #13A89F;
+	border-color: #13A89F;
+}
+
+/* Header */
+a.home-link {
+	color: #000000;
+	font-family: "Sue Ellen Francisco", serif;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+a.home-link:hover {
+	color: #13A89F;
+	text-decoration: none;
+}
+
+.badge-secondary {
+	background-color: #13A89F;
+	font-size: 90%;
+	font-weight: 300;
+	padding: 0.2rem 0.4rem;
+}
+
+/* Nav */
+.navbar {
+	padding: 0.5rem 0;
+}
+
+.navbar .navbar-toggler {
+	font-size: 1.5rem;
+	padding: 1.5rem 0;
+}
+
+.navbar .navbar-nav .nav-item a {
+	color: #000000;
+	font-family: "Sue Ellen Francisco", sans-serif;
+	font-size: 1.8rem;
+	padding-left: 0;
+	padding-right: 8rem;
+}
+
+.navbar .navbar-nav .nav-item a.active,
+.navbar .navbar-nav .nav-item a:hover {
+	color: #13A89F;
+}
+
+/* Contact */
+.social-icons a {
+	margin-right: 0.5rem;
+}
+
+.social-icons .btn {
+	border-radius: 100%;
+}

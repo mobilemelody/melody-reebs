@@ -19,6 +19,31 @@ app.get('/', function (req, res) {
 	res.render('home');
 });
 
+app.get('/about', function (req, res) {
+	let data = {};
+	data.page = "about";
+	res.render('about', data);
+});
+
+app.get('/portfolio', function (req, res) {
+	let data = {};
+	data.page = "portfolio";
+	res.render('portfolio', data);
+});
+
+app.get('/contact', function (req, res) {
+	let data = {};
+	data.page = "contact";
+	res.render('contact', data);
+});
+
+app.post('/contact', function (req, res) {
+	let data = {};
+	data.page = "contact";
+	data.submitted = true;
+	res.render('contact', data);
+});
+
 app.listen(PORT, function(){
   console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.');
 });
