@@ -17,6 +17,7 @@ a:hover {
 h1, h2 {
 	font-family: "Roboto Slab", serif;
 	font-weight: 200;
+	padding-top: 1rem;
 }
 
 h3 {
@@ -24,7 +25,7 @@ h3 {
 	font-size: 1.2rem;
 }
 
-button.btn {
+button.btn-secondary {
 	background-color: #13A89F;
 	border-color: #13A89F;
 }
@@ -59,17 +60,30 @@ a.home-link:hover {
 	padding: 1.5rem 0;
 }
 
+.navbar .navbar-nav .nav-item {
+	padding-right: 8rem;
+}
+
 .navbar .navbar-nav .nav-item a {
 	color: #000000;
 	font-family: "Sue Ellen Francisco", sans-serif;
 	font-size: 1.8rem;
-	padding-left: 0;
-	padding-right: 8rem;
+	padding: 0;
 }
 
 .navbar .navbar-nav .nav-item a.active,
 .navbar .navbar-nav .nav-item a:hover {
 	color: #13A89F;
+}
+
+/* About */
+.photo {
+	border-radius: 100%;
+}
+
+.photo-caption {
+	font-family: "Sue Ellen Francisco", serif;
+	font-size: 1.8rem;
 }
 
 /* Contact */
@@ -79,4 +93,12 @@ a.home-link:hover {
 
 .social-icons .btn {
 	border-radius: 100%;
+	height: 40px;
+	width: 40px;
+}
+
+#math {
+	display: inline-block;
+	margin-left: 0.5rem;
+	width: 60px;
 }

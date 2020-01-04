@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+  h2 get in touch
   // Social Icons
   div.social-icons.py-4
     a(href='mailto:info@melodyreebs.com')
@@ -20,8 +21,10 @@ block content
   if submitted
     p thank you for your message!
   else
+    if error
+      p Whoops! Something went wrong. Please try submitting the form again or contact me via one of the methods above.
     p or send me a message using the form below!
-    form#contact-form(method='post', action='/contact')
+    form#contact-form(method='post', action='/contact', onsubmit="return validateForm()")
       div.form-row
         div.col-sm-6
           label.pt-3(for='name') Name
@@ -33,7 +36,11 @@ block content
         div.col
           label.pt-3(for='message') Your Message
           textarea#message.form-control(name='message', rows='3')
-      div.form-row.pt-3
+      div.form-row
+        div.col
+          label.pt-4(for='math') #{num1} + #{num2} =
+          input#math.form-control(type='number', name='math', autocomplete='off', data-ans=ans, required)
+      div.form-row.py-3
         div.col
           button.btn.btn-secondary(type='submit') Send!
         

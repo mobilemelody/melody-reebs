@@ -1,104 +1,114 @@
 extends layout.pug
 
 block content
-	h2 briefly
-	p <b>name:</b> melody (chan) reebs
-	p <b>location:</b> 
-		a(href='http://en.wikipedia.org/wiki/Albany,_California', target='_blank') albany, CA
-	p <b>occupation:</b> transportation planner
-	
-	h2 work experience
-	p 
-		a(href='http://www.countyconnection.com/', target='_blank') county connection
-		| , 2018-present
-		br 
-		| manager of planning
-	p 
-		a(href='http://www.marintransit.org/', target='_blank') marin transit
-		| , 2012-2018
-		br 
-		| senior transit planner
-	p 
-		a(href='http://cdmsmith.com/', target='_blank') wilbur smith associates
-		| , 2008-2011
-		br 
-		| transportation planner
+  div.row
+    div.col-md-6.order-md-last.text-center
+      img.photo.img-fluid(src='https://melody-reebs.s3.amazonaws.com/me.png')
+      p.photo-caption this is what i look like.
+    div.col-md-6
+      h2 briefly
+      p <b>name:</b> melody (chan) reebs
+      p <b>location:</b> 
+        a(href='http://en.wikipedia.org/wiki/Albany,_California', target='_blank') albany, CA
+      p <b>occupation:</b> transportation planner
+      
+      h2 work experience
+      p 
+        a(href='http://www.countyconnection.com/', target='_blank') county connection
+        | , 2018-present
+        br 
+        | manager of planning
+      p 
+        a(href='http://www.marintransit.org/', target='_blank') marin transit
+        | , 2012-2018
+        br 
+        | senior transit planner
+      p 
+        a(href='http://cdmsmith.com/', target='_blank') wilbur smith associates
+        | , 2008-2011
+        br 
+        | transportation planner
 
-	h2 education
-	p 
-		a(href='https://oregonstate.edu/', target='_blank') oregon state university
-		| , 2018-present
-		br 
-		| BS computer science
-	p 
-		a(href='http://berkeley.edu/', target='_blank') university of california, berkeley
-		| , 2008-2009
-		br 
-		| MS transportation engineering
-	p 
-		a(href='http://berkeley.edu/', target='_blank') university of california, berkeley
-		| , 2004-2007
-		br 
-		| BS civil engineering
-		br
-		| city and regional planning, minor
+      h2 education
+      p 
+        a(href='https://oregonstate.edu/', target='_blank') oregon state university
+        | , 2018-present
+        br 
+        | BS computer science
+      p 
+        a(href='http://berkeley.edu/', target='_blank') university of california, berkeley
+        | , 2008-2009
+        br 
+        | MS transportation engineering
+      p 
+        a(href='http://berkeley.edu/', target='_blank') university of california, berkeley
+        | , 2004-2007
+        br 
+        | BS civil engineering
+        br
+        | city and regional planning, minor
 
-	h2 skills &amp; tools i use
-	div.row
-		div.col-md-3.col-sm-6
-			h3 web development
-			ul.list-unstyled
-				li
-					a.badge.badge-secondary(href='/portfolio') HTML
-				li 
-					a.badge.badge-secondary(href='/portfolio') CSS
-				li 
-					a.badge.badge-secondary(href='/portfolio') javascript
-				li 
-					a.badge.badge-secondary(href='/portfolio') jquery
-				li 
-					a.badge.badge-secondary(href='/portfolio') drupal
-				li 
-					a.badge.badge-secondary(href='/portfolio') bootstrap
-				li drush
-				li 
-					a.badge.badge-secondary(href='/portfolio') joomla
-		div.col-md-3.col-sm-6
-			h3 design + maps
-			ul.list-unstyled
-				li adobe 
-					a.badge.badge-secondary(href='/portfolio') illustrator
-				li adobe 
-					a.badge.badge-secondary(href='/portfolio') indesign
-				li adobe photoshop
-				li arcGIS
-				li 
-					a.badge.badge-secondary(href='/portfolio') google maps API
-				li google earth
-				li sketchup
-				li 
-					a.badge.badge-secondary(href='/portfolio') mapbox.js
-				li autoCAD
-		div.col-md-3.col-sm-6
-			h3 documents + data
-			ul.list-unstyled
-				li microsoft excel
-				li microsoft word
-				li microsoft access
-				li 
-					a.badge.badge-secondary(href='/portfolio') google fusion
-				li adobe acrobat
-				li SPSS
-				li MATLAB
-		div.col-md-3.col-sm-6
-			h3 transportation
-			ul.list-unstyled
-				li GTFS
-				li schedule masters (TMS)
-				li CAD/AVL
-				li VISSIM
-				li syncro
-				li simtraffic
-				li TRAFFIX
-				li turns W32
-				li HCS
+  h2 skills &amp; tools i use
+  div.row
+    div.col-md-3.col-sm-6
+      h3 web development
+      ul.list-unstyled
+        li
+          a.badge.badge-secondary(href='/portfolio') HTML
+        li 
+          a.badge.badge-secondary(href='/portfolio') CSS
+        li 
+          a.badge.badge-secondary(href='/portfolio') javascript
+        li 
+          a.badge.badge-secondary(href='/portfolio') jquery
+        li 
+          a.badge.badge-secondary(href='/portfolio') drupal
+        li 
+          a.badge.badge-secondary(href='/portfolio') bootstrap
+        li drush
+        li 
+          a.badge.badge-secondary(href='/portfolio') joomla
+    div.col-md-3.col-sm-6
+      h3 design + maps
+      ul.list-unstyled
+        li adobe 
+          a.badge.badge-secondary(href='/portfolio') illustrator
+        li adobe 
+          a.badge.badge-secondary(href='/portfolio') indesign
+        li adobe photoshop
+        li arcGIS
+        li 
+          a.badge.badge-secondary(href='/portfolio') google maps API
+        li google earth
+        li sketchup
+        li 
+          a.badge.badge-secondary(href='/portfolio') mapbox.js
+        li autoCAD
+    div.col-md-3.col-sm-6
+      h3 documents + data
+      ul.list-unstyled
+        li microsoft excel
+        li microsoft word
+        li microsoft access
+        li 
+          a.badge.badge-secondary(href='/portfolio') google fusion
+        li adobe acrobat
+        li SPSS
+        li MATLAB
+    div.col-md-3.col-sm-6
+      h3 transportation
+      ul.list-unstyled
+        li GTFS
+        li schedule masters (TMS)
+        li CAD/AVL
+        li VISSIM
+        li syncro
+        li simtraffic
+        li TRAFFIX
+        li turns W32
+        li HCS
+
+  a(href='https://melody-reebs.s3.amazonaws.com/ReebsM_Resume.pdf', target='_blank')
+    button.btn.btn-light
+      i.fa.fa-arrow-circle-down.pr-2
+      | Download resume
