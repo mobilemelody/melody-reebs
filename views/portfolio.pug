@@ -2,19 +2,26 @@ extends layout.pug
 
 block content
   // Filters
-  div.row.py-3
-    
+  div.portfolio-filters.py-3
+    each tagType in tags
+      span.tag-filter.badge.badge-secondary.mr-1.mb-1(class={active: tag == tagType}, data-filter=tagType, href) #{tagType}
+    span.clear-filter
+      i.fa.fa-times-circle.mr-1
+      span clear filters
 
   // Porfolio Items
   div.row
     each item, index in portfolio
       // Item Card
-      div.col-md-6.col-lg-4
+      div.portfolio-container.col-md-6.col-lg-4
         div.portfolio-card.mb-4
           img.card-img-top(src='https://melody-reebs.s3.amazonaws.com/' + item.images[0], data-toggle='modal', data-target='#portfolio-modal-' + index)
           div.card-info.p-3
             div.card-category #{item.categories}
             div.card-title #{item.title}
+            div.card-tags.d-none
+              each tag in item.tags
+                div(data-tag=tag)
 
       // Item Modal
       div.portfolio-modal.modal.fade(id='portfolio-modal-' + index)
@@ -40,4 +47,4 @@ block content
                     a(href=item.link, target='_blank') #{item.link}
                 div.modal-tags.py-3
                   each tag in item.tags
-                    span.badge.badge-secondary.mr-1(href='/portfolio') #{tag}
+                    a.badge.badge-secondary.mr-1(href='/portfolio?tag=' + tag) #{tag}

@@ -45,9 +45,14 @@ a.home-link:hover {
 
 .badge-secondary {
 	background-color: #13A89F;
+	cursor: pointer;
 	font-size: 90%;
 	font-weight: 300;
 	padding: 0.2rem 0.4rem;
+}
+
+.badge-secondary:hover {
+	background-color: #545B62;
 }
 
 /* Nav */
@@ -126,6 +131,29 @@ a.home-link:hover {
 	font-family: "Roboto Slab", serif;
 	font-size: 2rem;
 	line-height: 1.2;
+}
+
+.portfolio-filters .tag-filter {
+	background: #999999;
+}
+
+.portfolio-filters .tag-filter.active {
+	background-color: #13A89F;
+}
+
+.portfolio-filters .tag-filter:hover {
+	background-color: #545B62;
+}
+
+.portfolio-filters .clear-filter {
+	color: #999999;
+	cursor: not-allowed;
+	white-space: nowrap;
+}
+
+.portfolio-filters .clear-filter.active {
+	color: #000000;
+	cursor: pointer;
 }
 
 /* Contact */

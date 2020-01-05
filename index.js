@@ -28,6 +28,7 @@ app.get('/about', function (req, res) {
 app.get('/portfolio', function (req, res) {
   let data = {};
   data.page = "portfolio";
+  data.tag = req.query.tag;
 
   const scopes = 'https://www.googleapis.com/auth/spreadsheets';
   const sheets = google.sheets('v4');
@@ -54,10 +55,14 @@ app.get('/portfolio', function (req, res) {
       let values = result.data.values;
       let keys = values[0];
       data.portfolio = [];
+      data.tags = [];
       for (let i = 1; i < values.length; i++) {
         let item = {};
         for (let j = 0; j < keys.length; j++) {
-          if (j > 4 && j < 7) {
+          if (keys[j] == 'tags') {
+            item[keys[j]] = values[i][j].split(", ");
+            data.tags = data.tags.concat(item[keys[j]]);
+          } else if (keys[j] == 'images') {
             item[keys[j]] = values[i][j].split(", ");
           } else {
             item[keys[j]] = values[i][j];
@@ -66,6 +71,9 @@ app.get('/portfolio', function (req, res) {
         data.portfolio.push(item);
       }
       data.portfolio.reverse();
+      data.tags = data.tags.sort().filter(function (val, index, array) {
+        return array.indexOf(val) == index;
+      });
       res.render('portfolio', data);
     }
   });
