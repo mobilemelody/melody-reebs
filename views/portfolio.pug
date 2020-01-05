@@ -1,3 +1,39 @@
 extends layout.pug
 
 block content
+  // Filters
+  div.row.py-3
+    
+
+  // Porfolio Items
+  div.row
+    each item, index in portfolio
+      // Item Card
+      div.col-md-6.col-lg-4
+        div.portfolio-card.mb-4(data-toggle='modal', data-target='#portfolio-modal-' + index)
+          img.card-img-top(src='https://melody-reebs.s3.amazonaws.com/' + item.images[0])
+          div.card-info.p-3
+            div.card-category #{item.categories}
+            div.card-title #{item.title}
+
+      // Item Modal
+      div.portfolio-modal.modal.fade(id='portfolio-modal-' + index)
+        div.modal-dialog.modal-xl
+          div.modal-content.container
+            div.modal-body.row
+              div.col-md-8
+                each image in item.images
+                  img.modal-img.pb-2(src='https://melody-reebs.s3.amazonaws.com/' + image)
+              div.col-md-4
+                button.close(type='button', data-dismiss='modal', aria-label='close')
+                  i.fa.fa-times-circle
+                div.modal-category #{item.categories}
+                div.modal-title #{item.title}
+                div.modal-description.py-3 #{item.description}
+                div.modal-year <b>Year:</b> #{item.year}
+                if item.link
+                  div.modal-link <b>Link:</b> 
+                    a(href=item.link, target='_blank') #{item.link}
+                div.modal-tags.py-3
+                  each tag in item.tags
+                    span.badge.badge-secondary.mr-1(href='/portfolio') #{tag}

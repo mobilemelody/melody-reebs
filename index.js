@@ -16,49 +16,90 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-	res.render('home');
+  res.render('home');
 });
 
 app.get('/about', function (req, res) {
-	let data = {};
-	data.page = "about";
-	res.render('about', data);
+  let data = {};
+  data.page = "about";
+  res.render('about', data);
 });
 
 app.get('/portfolio', function (req, res) {
-	let data = {};
-	data.page = "portfolio";
-	res.render('portfolio', data);
-});
+  let data = {};
+  data.page = "portfolio";
 
-app.get('/contact', function (req, res) {
-	let data = {};
-	data.page = "contact";
-	data.num1 = Math.floor(Math.random() * 10);
-	data.num2 = Math.floor(Math.random() * 10);
-	data.ans = data.num1 + data.num2;
-	res.render('contact', data);
-});
-
-app.post('/contact', function (req, res) {
-	let data = {};
-	data.page = "contact";
-
-	const scopes = 'https://www.googleapis.com/auth/spreadsheets';
-	const sheets = google.sheets('v4');
-	
-	// Google authorization
-	let jwt = new google.auth.JWT(
+  const scopes = 'https://www.googleapis.com/auth/spreadsheets';
+  const sheets = google.sheets('v4');
+  
+  // Google authorization
+  let jwt = new google.auth.JWT(
     process.env.GOOGLE_CLIENT_EMAIL, 
     null, 
     process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), 
     scopes
   );
 
-	// Add form data
+  // Get values from spreadsheet
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1xUF-z_QRHxdp2qZaCdHR8nku3qZa8s66bNrGjQ4_0zg',
+    range: 'A:G',
+    majorDimension: 'ROWS',
+    auth: jwt,
+  }, function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      let values = result.data.values;
+      let keys = values[0];
+      data.portfolio = [];
+      for (let i = 1; i < values.length; i++) {
+        let item = {};
+        for (let j = 0; j < keys.length; j++) {
+          if (j > 4 && j < 7) {
+            item[keys[j]] = values[i][j].split(", ");
+          } else {
+            item[keys[j]] = values[i][j];
+          }
+        }
+        data.portfolio.push(item);
+      }
+      data.portfolio.reverse();
+      res.render('portfolio', data);
+    }
+  });
+  
+});
+
+app.get('/contact', function (req, res) {
+  let data = {};
+  data.page = "contact";
+  data.num1 = Math.floor(Math.random() * 10);
+  data.num2 = Math.floor(Math.random() * 10);
+  data.ans = data.num1 + data.num2;
+  res.render('contact', data);
+});
+
+app.post('/contact', function (req, res) {
+  let data = {};
+  data.page = "contact";
+
+  const scopes = 'https://www.googleapis.com/auth/spreadsheets';
+  const sheets = google.sheets('v4');
+  
+  // Google authorization
+  let jwt = new google.auth.JWT(
+    process.env.GOOGLE_CLIENT_EMAIL, 
+    null, 
+    process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), 
+    scopes
+  );
+
+  // Add form data
   let row = [];
   for (let key in req.body) {
-  	row.push(req.body[key]);
+    row.push(req.body[key]);
   }
   row.pop();
   
@@ -77,10 +118,10 @@ app.post('/contact', function (req, res) {
     }
     else {
       data.submitted = true;
-			res.render('contact', data);
+      res.render('contact', data);
     }
   });
-	
+  
 });
 
 app.listen(PORT, function(){

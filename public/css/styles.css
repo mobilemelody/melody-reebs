@@ -86,6 +86,43 @@ a.home-link:hover {
 	font-size: 1.8rem;
 }
 
+/* Portfolio */
+.portfolio-card {
+	text-align: center;
+}
+
+.portfolio-card:hover {
+	cursor: pointer;
+}
+
+.portfolio-card .card-img-top {
+	border-radius: 100%;
+	height: 300px;
+	object-fit: cover;
+	width: 300px;
+}
+
+.portfolio-card .card-info {
+}
+
+.portfolio-card .card-category,
+.portfolio-modal .modal-category {
+	color: #999999;
+	font-size: 0.8rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+}
+
+.portfolio-card .card-title,
+.portfolio-modal .modal-title {
+	font-family: "Roboto Slab", serif;
+	font-size: 1.2rem;
+}
+
+.portfolio-modal .modal-img {
+	width: 100%;
+}
+
 /* Contact */
 .social-icons a {
 	margin-right: 0.5rem;
