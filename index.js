@@ -59,10 +59,10 @@ app.get('/portfolio', function (req, res) {
       for (let i = 1; i < values.length; i++) {
         let item = {};
         for (let j = 0; j < keys.length; j++) {
-          if (keys[j] == 'tags') {
+          if (keys[j] == 'tags' && values[i][j]) {
             item[keys[j]] = values[i][j].split(", ");
             data.tags = data.tags.concat(item[keys[j]]);
-          } else if (keys[j] == 'images') {
+          } else if (keys[j] == 'images' && values[i][j]) {
             item[keys[j]] = values[i][j].split(", ");
           } else {
             item[keys[j]] = values[i][j];
