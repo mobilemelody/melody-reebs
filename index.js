@@ -131,6 +131,11 @@ app.post('/hello', function (req, res) {
   
 });
 
+app.use(function(req, res) {
+  res.status(404);
+  res.render('404');
+});
+
 app.listen(PORT, function(){
   console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.');
 });
