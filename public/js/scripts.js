@@ -1,6 +1,5 @@
 function validateForm() {
-	console.log("validate");
-	if ($('#math').val() != $('#math').data('ans')) {
+	if ($('#math').val() != $('#math').data('num1') + $('#math').data('num2')) {
 		if (!$('#error-msg').length) {
 			$('#math').after("<small id='error-msg' class='text-danger pl-2'>Incorrect value</small>");
 		}

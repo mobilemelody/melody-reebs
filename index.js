@@ -80,16 +80,15 @@ app.get('/portfolio', function (req, res) {
   
 });
 
-app.get('/contact', function (req, res) {
+app.get('/hello', function (req, res) {
   let data = {};
   data.page = "contact";
   data.num1 = Math.floor(Math.random() * 10);
   data.num2 = Math.floor(Math.random() * 10);
-  data.ans = data.num1 + data.num2;
   res.render('contact', data);
 });
 
-app.post('/contact', function (req, res) {
+app.post('/hello', function (req, res) {
   let data = {};
   data.page = "contact";
 
