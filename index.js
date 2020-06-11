@@ -109,11 +109,17 @@ app.post('/hello', function (req, res) {
     row.push(req.body[key]);
   }
   row.pop();
+
+  // Add timestamp
+  row.push(new Date());
+
+  // Add IP address
+  row.push(req.ip)
   
   // Append values to spreadsheet
   sheets.spreadsheets.values.append({
     spreadsheetId: '1M3jHgPqZZRhD2tkyE_DpSzKSSEUTMfulHYqOMchGMwI',
-    range: 'A:C',
+    range: 'A:E',
     auth: jwt,
     valueInputOption: 'USER_ENTERED',
     resource: {values: [row]}
