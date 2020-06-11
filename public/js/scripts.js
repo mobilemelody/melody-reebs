@@ -1,8 +1,15 @@
 function validateForm() {
+	$('.error-msg').remove();
+
 	if ($('#math').val() != $('#math').data('num1') + $('#math').data('num2')) {
-		if (!$('#error-msg').length) {
-			$('#math').after("<small id='error-msg' class='text-danger pl-2'>Incorrect value</small>");
-		}
+		$('#math').after("<small id='error-math' class='error-msg text-danger pl-2'>Incorrect value</small>");
+	}
+
+	if ($('#message').val().includes('http') && $('#message').val().includes('://')) {
+		$('#message').after("<small id='error-http' class='error-msg text-danger pl-2'>No URLs please (or leave out http protocol)</small>");
+	}
+
+	if ($('.error-msg').length) {
 		return false;
 	}
 }
