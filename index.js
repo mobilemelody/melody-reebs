@@ -80,15 +80,13 @@ app.get('/portfolio', function (req, res) {
   
 });
 
-app.get('/hello', function (req, res) {
+app.get('/contact', function (req, res) {
   let data = {};
   data.page = "contact";
-  data.num1 = Math.floor(Math.random() * 10);
-  data.num2 = Math.floor(Math.random() * 10);
-  res.render('contact', data);
+  res.render('contact', getCaptcha(data));
 });
 
-app.post('/hello', function (req, res) {
+app.post('/contact', function (req, res) {
   let data = {};
   data.page = "contact";
 
@@ -103,12 +101,17 @@ app.post('/hello', function (req, res) {
     scopes
   );
 
+  // Validate form data
+  if (!("name" in req.body && "email" in req.body && "message" in req.body && "math" in req.body) || Object.keys(req.body).length != 4) {
+    data.error = "Your submission had incorrect fields. Please try again.";
+    return res.render('contact', getCaptcha(data));
+  }
+
   // Add form data
   let row = [];
-  for (let key in req.body) {
-    row.push(req.body[key]);
-  }
-  row.pop();
+  row.push(req.body["name"]);
+  row.push(req.body["email"]);
+  row.push(req.body["message"]);
 
   // Add timestamp
   row.push(new Date());
@@ -126,8 +129,8 @@ app.post('/hello', function (req, res) {
   }, function(err, result) {
     if (err) {
       console.log(err);
-      data.error = true;
-      res.render('contact', data);
+      data.error = "Whoops! Something went wrong on our end. Please try submitting the form again or contact me via one of the methods above.";
+      res.render('contact', getCaptcha(data));
     }
     else {
       data.submitted = true;
@@ -136,6 +139,12 @@ app.post('/hello', function (req, res) {
   });
   
 });
+
+function getCaptcha(data) {
+  data.num1 = Math.floor(Math.random() * 10);
+  data.num2 = Math.floor(Math.random() * 10);
+  return data;
+}
 
 app.use(function(req, res) {
   res.status(404);

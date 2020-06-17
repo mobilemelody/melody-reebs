@@ -21,10 +21,10 @@ block content
   if submitted
     p thank you for your message!
   else
-    if error
-      p Whoops! Something went wrong. Please try submitting the form again or contact me via one of the methods above.
     p or send me a message using the form below!
-    form#contact-form(method='post', action='/hello', onsubmit="return validateForm()")
+    if error
+      div.alert.alert-secondary #{error}
+    form#contact-form(method='post', action='/contact', onsubmit="return validateForm()")
       div.form-row
         div.col-sm-6
           label.pt-3(for='name') Name
