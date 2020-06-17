@@ -71,9 +71,7 @@ app.get('/portfolio', function (req, res) {
         data.portfolio.push(item);
       }
       data.portfolio.reverse();
-      data.tags = data.tags.sort().filter(function (val, index, array) {
-        return array.indexOf(val) == index;
-      });
+      data.tags = data.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())).filter((val, index, array) => array.indexOf(val) == index);
       res.render('portfolio', data);
     }
   });
@@ -104,8 +102,7 @@ app.post('/contact', function (req, res) {
   // Validate form data
   if (!("name" in req.body && "email" in req.body && "message" in req.body && "math" in req.body && "num1" in req.body && "num2" in req.body) || Object.keys(req.body).length != 6) {
     data.error = "Your submission had the incorrect number of fields. Please try again.";
-  }
-  else if (parseInt(req.body["num1"]) + parseInt(req.body["num2"]) != parseInt(req.body["math"])) {
+  } else if (parseInt(req.body["num1"]) + parseInt(req.body["num2"]) != parseInt(req.body["math"])) {
     data.error = "Your response to the math captcha was incorrect. Please try again.";
   }
 
@@ -136,7 +133,7 @@ app.post('/contact', function (req, res) {
   }, function(err, result) {
     if (err) {
       console.log(err);
-      data.error = "Whoops! Something went wrong on our end. Please try submitting the form again or contact me via one of the methods above.";
+      data.error = "Whoops! Something went wrong. Please try submitting the form again or contact me via one of the methods above.";
       res.render('contact', getCaptcha(data));
     }
     else {
