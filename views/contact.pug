@@ -40,6 +40,8 @@ block content
         div.col
           label.pt-4(for='math') #{num1} + #{num2} =
           input#math.form-control(type='number', name='math', autocomplete='off', data-num1=num1, data-num2=num2, required)
+          input(type="hidden", name="num1", value=num1)
+          input(type="hidden", name="num2", value=num2)
       div.form-row.py-3
         div.col
           button.btn.btn-secondary(type='submit') Send!

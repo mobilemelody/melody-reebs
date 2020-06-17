@@ -102,8 +102,15 @@ app.post('/contact', function (req, res) {
   );
 
   // Validate form data
-  if (!("name" in req.body && "email" in req.body && "message" in req.body && "math" in req.body) || Object.keys(req.body).length != 4) {
-    data.error = "Your submission had incorrect fields. Please try again.";
+  if (!("name" in req.body && "email" in req.body && "message" in req.body && "math" in req.body && "num1" in req.body && "num2" in req.body) || Object.keys(req.body).length != 6) {
+    data.error = "Your submission had the incorrect number of fields. Please try again.";
+  }
+  else if (parseInt(req.body["num1"]) + parseInt(req.body["num2"]) != parseInt(req.body["math"])) {
+    data.error = "Your response to the math captcha was incorrect. Please try again.";
+  }
+
+  // Render contact page with error message
+  if (data.error) {
     return res.render('contact', getCaptcha(data));
   }
 
