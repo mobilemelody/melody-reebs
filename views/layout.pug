@@ -3,6 +3,7 @@ html(lang='en')
   head
     // Meta tags
     meta(charset='utf-8')
+    meta(name='description', content='hello. i am a transportation planner in the san francisco bay area. i make maps, food, & websites.')
     meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no')
 
     // Favicon
@@ -41,3 +42,11 @@ html(lang='en')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
     script(src='/js/scripts.js')
+
+    // Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-74199919-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-74199919-2');
